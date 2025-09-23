@@ -1,19 +1,19 @@
 class InfoPizza {
     constructor(pizzaType, pizzaQuantity, 
-        ingredientsExtra, address, codePostal, 
+        extras, address, codePostal, 
         nom, prenom, telephone, 
-        courriel, modePaiement){
+        email, modePaiement){
 
         
         this.pizzaType = pizzaType;
         this.pizzaQuantity = pizzaQuantity;
-        this.ingredientsExtra = ingredientsExtra || [];
+        this.extras= extras || [];
         this.address = address;
         this.codePostal = codePostal;
         this.nom = nom;
         this.prenom = prenom;
         this.telephone = telephone;
-        this.courriel = courriel;
+        this.email = email;
         this.modePaiement = modePaiement;
         this.prixbase;
         this.prixTotal;
@@ -54,7 +54,7 @@ class InfoPizza {
 
         prixTemp *= this.pizzaQuantity;
 
-        let extras = this.ingredientsExtra;
+        let extras = this.extras;
         if (!Array.isArray(extras)) {
             extras = extras ? [extras] : [];
         }

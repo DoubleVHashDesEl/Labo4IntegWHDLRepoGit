@@ -21,7 +21,7 @@ import InfoPizza from './classInfoPizza.js';
 
 // Home page
 app.get('/', (req, res) => {
-  res.render('pagePizza' );
+  res.render('pagePizza');
 });
 
 // Data Submitted page
@@ -32,29 +32,29 @@ app.post('/soumission-pizza', (req, res) => {
   pizzaInfo.pizzaType = req.body.pizzaType;
   pizzaInfo.pizzaQuantity = req.body.pizzaQuantity;
   pizzaInfo.pizzaSize = req.body.pizzaSize;
-  pizzaInfo.ingredientsExtra = req.body.ingredientsExtra || [];
+  pizzaInfo.extras = req.body.extras || [];
   pizzaInfo.address = req.body.address;
   pizzaInfo.codePostal = req.body.codePostal;
   pizzaInfo.nom = req.body.nom;
   pizzaInfo.prenom = req.body.prenom;
   pizzaInfo.telephone = req.body.telephone;
-  pizzaInfo.courriel = req.body.courriel;
+  pizzaInfo.email = req.body.email;
   pizzaInfo.modePaiement = req.body.modePaiement;
 
   pizzaInfo.pizzaPrixCommande();
 
- //Console log pour premier commit
+  //Console log pour premier commit
   console.table(pizzaInfo);
 
 
 
- res.render('dataSubmitted', { InfoPizza: pizzaInfo, prixTotal: pizzaInfo.prixTotal, prixbase: pizzaInfo.prixbase});
+  res.render('dataSubmitted', { InfoPizza: pizzaInfo });
 
 });
 
 //Data transmission to dataSubmitted page
 app.post('/dataSubmitted', (req, res) => {
-  
+
   res.redirect('/dataSubmitted');
 });
 
