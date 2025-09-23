@@ -1,0 +1,120 @@
+<!--
+  Fichier : historiqueDeVosCommandes.ejs
+  Description : Page d'affichage de l'historique des commandes filtrées par téléphone.
+  Créateur : DoubleVHashDesEl
+  Date de création : 23 septembre 2025
+  Dernière modification : 23 septembre 2025
+-->
+
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <%- include('partials/head') %>
+
+</head>
+
+<body class="container">
+
+
+
+    <header>
+
+        <%- include('partials/header') %>
+
+    </header>
+
+
+
+    <main>
+
+        <div class="bg-blur"></div>
+        <div class="container position-relative" style="z-index:1;">
+
+            <div class="jumbotron bg-opacity-40 rounded">
+
+                <form action="/historiqueDeVosCommandes" method="GET">
+
+                    <div class="container col-xxl-12 px-4 py-5">
+                        <h1>Historique de vos commandes</h1>
+                        <h2>Consultez l'historique de vos commandes précédentes.</h2>
+
+
+                        <label for="telephone" class="form-label">VOTRE TELEPHONE:</label>
+                        <input type="text" class="form-control" id="telephone" name="telephone"
+                            placeholder="Votre telephone" style="width:300px;" pattern="\d{3}-\d{3}-\d{4}"
+                            title="Format: 123-456-7890" maxlength="12" required>
+
+                        <button type="submit" class="btn btn-primary">Voir l'historique</button>
+                    </div>
+
+                </form>
+
+
+            </div>
+
+            <div class="jumbotron bg-opacity-40 rounded">
+                <h2>Historique des commandes</h2>
+
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Type de pizza</th>
+                            <th>Quantité</th>
+                            <th>Taille</th>
+                            <th>Prix total</th>
+                            <th>Nom</th>
+                            <th>Téléphone</th>
+                            <th>Email</th>
+                            <th>Méthode de paiement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% orders.forEach(order=> { %>
+                            <tr>
+                                <td>
+                                    <%= order.pizzaType %>
+                                </td>
+                                <td>
+                                    <%= order.pizzaQuantity %>
+                                </td>
+                                <td>
+                                    <%= order.pizzaSize %>
+                                </td>
+                                <td>
+                                    <%= order.totalPrice %>
+                                </td>
+                                <td>
+                                    <%= order.nom %>
+                                </td>
+                                <td>
+                                    <%= order.telephone %>
+                                </td>
+                                <td>
+                                    <%= order.email %>
+                                </td>
+                                <td>
+                                    <%= order.modePaiement %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </main>
+    <footer>
+
+        <%- include('partials/footer') %>
+
+    </footer>
+
+
+
+</body>
+
+</html>

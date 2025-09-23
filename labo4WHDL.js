@@ -1,9 +1,18 @@
+/*
+  Fichier : labo4WHDL.js
+  Description : Serveur principal Express pour la gestion des commandes de pizzas, l'affichage, et l'historique.
+  Créateur : DoubleVHashDesEl
+  Date de création : 23 septembre 2025
+  Dernière modification : 23 septembre 2025
+*/
+
 import express from 'express';
-import path from 'path';
 import fs from 'fs';
 
 const app = express();
 const port = 8080;
+
+
 
 //static files
 app.use(express.static('public'));
@@ -41,21 +50,45 @@ app.post('/soumission-pizza', (req, res) => {
   pizzaInfo.email = req.body.email;
   pizzaInfo.modePaiement = req.body.modePaiement;
 
+
   pizzaInfo.pizzaPrixCommande();
 
-  //Console log pour premier commit
-  console.table(pizzaInfo);
+  const dataFile = './Data/historique.json';
+  let orders = [];
+  if (fs.existsSync(dataFile)) {
+    try {
+      orders = JSON.parse(fs.readFileSync(dataFile));
+    } catch (e) {
+      orders = [];
+    }
+  }
+  orders.push(pizzaInfo);
+  fs.writeFileSync(dataFile, JSON.stringify(orders, null, 2));
 
-
-
-  res.render('dataSubmitted', { InfoPizza: pizzaInfo });
+  res.render('dataSubmitted', { InfoPizza: pizzaInfo });//page pour le reçu
 
 });
 
-//Data transmission to dataSubmitted page
-app.post('/dataSubmitted', (req, res) => {
+// Order History page
+app.get('/historiqueDeVosCommandes', (req, res) => {
 
-  res.redirect('/dataSubmitted');
+  // telephone par query string
+  const phone = req.query.telephone;
+  let orders = [];
+  // lire le fichier JSON
+  const dataFile = './Data/historique.json';
+  if (fs.existsSync(dataFile)) {
+    orders = JSON.parse(fs.readFileSync(dataFile));
+  }
+  
+
+  let filteredOrders = orders;
+  if (phone) {
+    filteredOrders = orders.filter(order => order.telephone === phone);
+  }
+
+  res.render('historiqueDeVosCommandes', { orders: filteredOrders, phone });
+
 });
 
 

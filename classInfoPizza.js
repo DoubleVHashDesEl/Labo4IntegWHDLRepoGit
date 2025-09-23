@@ -1,3 +1,11 @@
+/*
+  Fichier : classInfoPizza.js
+  Description : Classe InfoPizza pour stocker et valider les informations d'une commande de pizza.
+  Créateur : DoubleVHashDesEl
+  Date de création : 23 septembre 2025
+  Dernière modification : 23 septembre 2025
+*/
+
 class InfoPizza {
     constructor(pizzaType, pizzaQuantity, 
         extras, address, codePostal, 
@@ -36,7 +44,7 @@ class InfoPizza {
             default:
                 prixTemp = 0;
         }
-        console.log(this.pizzaSize);
+        
         switch(this.pizzaSize){
             case "petite":
                 prixTemp *= 0.8;
@@ -73,38 +81,5 @@ class InfoPizza {
 
         
     }
-
-/*
-    InfoPizzaVerification(){
-
-        let returnString = "";
-        let statusErreur = false;
-
-        if(this.pizzaType == "" || this.pizzaQuantity == "" || this.address == "" || this.codePostal == "" || this.nom == "" || this.prenom == "" || this.telephone == "" || this.courriel == "" || this.modePaiement == ""){
-            return ("Veuillez remplir tous les champs.\n");
-        }
-
-        const telephoneRegex = /^\d{3}-\d{3}-\d{4}$/;
-
-        if(!telephoneRegex.test(this.telephone.trim())){
-            returnString += "Le numéro de téléphone doit être au format 123-456-7890.\n";
-            statusErreur = true;
-        }
-        
-        const codePostalRegex = /^[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d$/;
-
-        if(!codePostalRegex.test(this.codePostal.trim())){
-            returnString += "Le code postal doit être au format A1A 1A1.";
-            statusErreur = true;
-        }
-
-
-
-        if(statusErreur){
-            return returnString;
-        }
-        return true;
-
-    }*/
 }
 export default InfoPizza;

@@ -1,3 +1,11 @@
+<!--
+  Fichier : dataSubmitted.ejs
+  Description : Page d'affichage des données soumises après une commande.
+  Créateur : DoubleVHashDesEl
+  Date de création : 23 septembre 2025
+  Dernière modification : 23 septembre 2025
+-->
+
 <!-- views/pages/index.ejs -->
 
 
@@ -65,44 +73,63 @@
                         <tr>
                             <td>Extras</td>
                             <td>
-                                <% let extrasArr = Array.isArray(InfoPizza.extras) ? InfoPizza.extras : (InfoPizza.extras ? [InfoPizza.extras] : []); %>
-                                <%= extrasArr.length ? extrasArr.join(', ') : 'Aucun' %>
+                                <% let extrasArr=Array.isArray(InfoPizza.extras) ? InfoPizza.extras : (InfoPizza.extras
+                                    ? [InfoPizza.extras] : []); %>
+                                    <%= extrasArr.length ? extrasArr.join(', ') : ' Aucun' %>
                             </td>
                         <tr>
                             <td>Adresse</td>
-                            <td><%= InfoPizza.address %></td>
+                            <td>
+                                <%= InfoPizza.address %>
+                            </td>
                         </tr>
                         <tr>
                             <td>Code Postal</td>
-                            <td><%= InfoPizza.codePostal %></td>
+                            <td>
+                                <%= InfoPizza.codePostal %>
+                            </td>
                         </tr>
                         <tr>
                             <td>Nom</td>
-                            <td><%= InfoPizza.nom %></td>
+                            <td>
+                                <%= InfoPizza.nom %>
+                            </td>
                         </tr>
                         <tr>
                             <td>Prénom</td>
-                            <td><%= InfoPizza.prenom %></td>
+                            <td>
+                                <%= InfoPizza.prenom %>
+                            </td>
                         </tr>
                         <tr>
                             <td>Téléphone</td>
-                            <td><%= InfoPizza.telephone %></td>
+                            <td>
+                                <%= InfoPizza.telephone %>
+                            </td>
                         </tr>
                         <tr>
                             <td>Email</td>
-                            <td><%= InfoPizza.email %></td>
+                            <td>
+                                <%= InfoPizza.email %>
+                            </td>
                         </tr>
                         <tr>
                             <td>Méthode de paiement</td>
-                            <td><%= InfoPizza.modePaiement %></td>
+                            <td>
+                                <%= InfoPizza.modePaiement %>
+                            </td>
                         </tr>
                         <tr>
                             <td>Prix de la commande</td>
-                            <td><%= InfoPizza.prixBase %></td>
+                            <td>
+                                <%= InfoPizza.prixBase %>
+                            </td>
                         </tr>
                         <tr>
                             <td>Prix total</td>
-                            <td><%= InfoPizza.prixTotal %></td>
+                            <td>
+                                <%= InfoPizza.prixTotal %>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -112,7 +139,7 @@
 
     </main>
 
- 
+
 
     <footer>
 
