@@ -1,0 +1,143 @@
+<!-- views/pages/index.ejs -->
+
+ 
+
+<!-- <!DOCTYPE html> removed: the layout already includes the document type declaration -->
+
+<html lang="fr">
+
+    
+    <head>
+    <%- include('partials/head') %>
+
+
+   </head>
+
+    <body>  
+        <div class="container">
+      
+
+        <header>
+
+            <%- include('partials/header') %>
+
+        </header>
+
+    
+
+        <main>
+
+            <div class="jumbotron">
+
+                <div class="TextPizzaH1">Pizzaria Mama</div>
+
+                <div class="TextPizzaH2">Bienvenue à Pizzaria Mama, Faite votre commande en ligne!</div>
+
+
+                <!-- section de choisisage de pizza -->
+                <div class="ChoixPizza">Choisissez un type de pizza:</div>
+
+
+
+                <form action="/soumission-pizza" method="POST">
+                    <div>
+                        <label>
+                            <input type="radio" name="pizzaType" value="Hawaienne"> Hawaienne
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="pizzaType" value="All Dressed"> All Dressed
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="pizzaType" value="Silicienne"> Silicienne
+                        </label>
+                    </div>
+                    
+
+                    <div>QUANTITÉ DE PIZZA ?</div>
+                    <input type="number" id="quantity" name="pizzaQuantity" min="1" max="99">
+                
+
+                    <DIV>TAILLE DE PIZZA ?</DIV>
+                    <select name="pizzaSize" id="size">
+                        <option value="petite" >Petite</option>
+                        <option value="moyenne" >Moyenne</option>
+                        <option value="grande" >Grande</option>
+                    </select>
+
+                    <!-- SECTION INGREDIENTS SUPP -->
+
+                    <div class="ChoixPizza">EXTRAS?:</div>
+
+
+                
+                    <div>
+                        <label>
+                            <input type="checkbox" name="ingredientsExtra" value="Extra Pepperoni"> Extra Pepperoni
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="ingredientsExtra" value="Extra Mozzarella"> Extra Mozzarella
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="ingredientsExtra" value="Extra Oeuf"> Extra Oeuf
+                        </label>
+                    </div>
+                
+
+                    <div>ADRESSE DE LIVRAISON:</div>
+                        <textarea required class="form-control" id="address" name="address" placeholder="Adresse de livraison" rows="4" cols="15" style="width:300px;"></textarea>
+                    
+                    <div>CODE POSTAL:</div>
+                        <input type="text" class="form-control" id="codePostal" name="codePostal" placeholder="Code postal" style="width:300px;" maxlength="7" pattern="[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d" title="Format: A1A 1A1">
+
+                    <div>VOTRE NOM:</div>
+                        <input type="text" required class="form-control" id="nom" name="nom" placeholder="Votre nom" style="width:300px;">
+                    
+                    <div>VOTRE PRENOM:</div>
+                        <input type="text" required class="form-control" id="prenom" name="prenom" placeholder="Votre prenom" style="width:300px;">
+                    
+                    <div>VOTRE TELEPHONE:</div>
+                        <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Votre telephone" style="width:300px;" pattern="\d{3}-\d{3}-\d{4}" title="Format: 123-456-7890" maxlength="12">
+                    
+                    <div>VOTRE EMAIL? exemple AAAAAAA@hotmail.com:</div>
+                        <input type="email" required class="form-control" id="courriel" name="courriel" placeholder="Votre email" style="width:300px;">
+                    
+                    <div>METHODE DE PAIEMENT ?</div>
+
+                    <select name="modePaiement" id="modePaiement">
+                        <option value="creditCard">Carte de credit</option>
+                        <option value="debitCard">Carte de debit</option>
+                        <option value="paypal">Paypal</option>
+                        <option value="cash">Cash</option>
+                    </select>
+
+
+
+
+                    <div>Clicker ici pour soumettre votre commande:</div>
+                    <button type="submit" class="btn btn-primary">Soumettre</button>
+
+                </form>
+            </div>
+
+        </main>
+
+    
+
+        <footer>
+
+            <%- include('partials/footer') %>
+
+        </footer>
+
+        </div>
+    </body>
+
+</html>
