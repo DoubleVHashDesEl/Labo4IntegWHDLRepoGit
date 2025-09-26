@@ -10,7 +10,7 @@ class InfoPizza {
     constructor(pizzaType, pizzaQuantity, 
         extras, address, codePostal, 
         nom, prenom, telephone, 
-        email, modePaiement){
+        email, modePaiement, taxe) {
 
         
         this.pizzaType = pizzaType;
@@ -25,6 +25,7 @@ class InfoPizza {
         this.modePaiement = modePaiement;
         this.prixbase;
         this.prixTotal;
+        this.taxe;
     }
 
     pizzaPrixCommande(){
@@ -75,9 +76,9 @@ class InfoPizza {
         this.prixBase = prixTemp;
         this.prixTotal = prixTemp;
         this.prixTotal *= 1.14975;
-
         this.prixTotal = Math.round(this.prixTotal * 100) / 100;
         this.prixBase = Math.round(this.prixBase * 100) / 100;
+        this.taxe = prixTotal - prixBase;
 
         
     }

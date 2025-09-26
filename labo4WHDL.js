@@ -49,6 +49,7 @@ app.post('/soumission-pizza', (req, res) => {
   pizzaInfo.telephone = req.body.telephone;
   pizzaInfo.email = req.body.email;
   pizzaInfo.modePaiement = req.body.modePaiement;
+  pizzaInfo.taxe = req.body.taxe;
 
 
   pizzaInfo.pizzaPrixCommande();
