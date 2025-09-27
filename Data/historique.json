@@ -515,5 +515,21 @@
     "pizzaSize": "petite",
     "prixBase": 10.58,
     "prixTotal": 12.16
+  },
+  {
+    "pizzaType": "Hawaienne",
+    "pizzaQuantity": "2",
+    "pizzaSize": "petite",
+    "extras": "Extra Pepperoni",
+    "address": "3176 rue Beausejour",
+    "codePostal": "J7H1A5",
+    "nom": "Abdelkhalek",
+    "prenom": "Sami",
+    "telephone": "438-728-2174",
+    "email": "sonicgame127@gmail.com",
+    "modePaiement": "debitCard",
+    "prixBase": "26.20",
+    "taxe": "3.92",
+    "prixTotal": "30.12"
   }
 ]
