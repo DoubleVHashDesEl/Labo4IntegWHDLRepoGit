@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!--
   Fichier : pagePizza.ejs
   Description : Page principale pour la commande de pizzas en ligne.
@@ -6,203 +7,153 @@
   Dernière modification : 23 septembre 2025
 -->
 
-
-<!-- views/pages/index.ejs -->
-
-
-
-<!-- <!DOCTYPE html> removed: the layout already includes the document type declaration -->
-
 <html lang="fr">
+    <head>
+        <%- include('partials/head') %>
+    </head>
 
-
-<head>
-    <%- include('partials/head') %>
-</head>
-
-
-<body>
-    <div class="container">
-
-
-        <header>
-
-            <%- include('partials/header') %>
-
-        </header>
-
-
-
-        <main>
-
-            <div class="bg-blur"></div>
-            <div class="container position-relative" style="z-index:1;">
-
-
-                <div class="jumbotron bg-opacity-40 rounded">
-
-
-
-                    <div class="container col-xxl-8 px-4 py-5">
-                        <div class="TextPizzaH1 container-fluid bg-dark rounded">Pizzaria Mama</div>
-
-                        <div class="b-example-divider"></div>
-
-                        <div class="TextPizzaH2 container-fluid bg-dark rounded">Bienvenue à Pizzaria Mama, Faite votre
-                            commande en ligne!</div>
-                    </div>
-
-
-                    <form action="/soumission-pizza" method="POST">
-
-                        <div class="container col-xxl-12 px-4 py-5">
-                            <!-- section de choisisage de pizza -->
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <h2>Choisissez un type de pizza:</h2>
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="pizzaType" value="Hawaienne" required> Hawaienne 7.00$
-                                        </label>
-                                    </div>
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="pizzaType" value="All Dressed"> All Dressed 8.10$
-                                        </label>
-                                    </div>
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="pizzaType" value="Silicienne"> Silicienne 6.30$
-                                        </label>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6">
-
-                                    <h2>QUANTITÉ DE PIZZA ?</h2>
-                                    <input type="number" id="quantity" name="pizzaQuantity" min="1" max="99" required>
-
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <h2>TAILLE DE PIZZA ?</h2>
-                                    <select name="pizzaSize" id="size">
-                                        <option value="petite">Petite X0.8$</option>
-                                        <option value="moyenne">Moyenne X1$</option>
-                                        <option value="grande">Grande X1.2$</option>
-                                    </select>
-                                </div>
-                                <!-- SECTION INGREDIENTS SUPP -->
-                                <div class="col-md-6">
-                                    <h2>EXTRAS?:</h2>
-                                    <div>
-                                        <label>
-                                            <input type="checkbox" name="extras" value="Extra Pepperoni">
-                                            Extra Pepperoni 0.50$
-                                        </label>
-                                    </div>
-                                    <div>
-                                        <label>
-                                            <input type="checkbox" name="extras" value="Extra Mozzarella">
-                                            Extra Mozzarella 0.50$
-                                        </label>
-                                    </div>
-                                    <div>
-                                        <label>
-                                            <input type="checkbox" name="extras" value="Extra Oeuf"> Extra
-                                            Oeuf 0.50$
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-
+    <body>
+        <div class="container">
+            <header>
+                <%- include('partials/header') %>
+            </header>
+            <main>
+                <div class="bg-blur"></div>
+                <div class="container position-relative" style="z-index:1;">
+                    <div class="jumbotron bg-opacity-40 rounded">
                         <div class="container col-xxl-8 px-4 py-5">
+                            <div class="TextPizzaH1 container-fluid bg-dark rounded">Pizzaria Mama</div>
 
-                            <h3 class="mb-3">VOS INFORMATIONS DE LIVRAISON:</h3>
+                            <div class="b-example-divider"></div>
 
-                            <div class="row g-3">
-                                <div class="col-md-12">
-                                    <label for="address" class="form-label">ADRESSE DE LIVRAISON:</label>
-                                    <textarea required class="form-control" id="address" name="address"
-                                        placeholder="Adresse de livraison" rows="4" cols="15"
-                                        style="width:300px;"></textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="codePostal" class="form-label">CODE POSTAL:</label>
-                                    <input type="text" class="form-control" id="codePostal" name="codePostal"
-                                        placeholder="Code postal" style="width:300px;" maxlength="7"
-                                        pattern="[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d" title="Format: A1A 1A1">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="nom" class="form-label">VOTRE NOM:</label>
-                                    <input type="text" required class="form-control" id="nom" name="nom"
-                                        placeholder="Votre nom" style="width:300px;">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="prenom" class="form-label">VOTRE PRENOM:</label>
-                                    <input type="text" required class="form-control" id="prenom" name="prenom"
-                                        placeholder="Votre prenom" style="width:300px;">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="telephone" class="form-label">VOTRE TELEPHONE:</label>
-                                    <input type="text" class="form-control" id="telephone" name="telephone"
-                                        placeholder="Votre telephone" style="width:300px;" pattern="\d{3}-\d{3}-\d{4}"
-                                        title="Format: 123-456-7890" maxlength="12" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="email" class="form-label">Votre Email:</label>
-                                    <input type="text" class="form-control" id="email" name="email"
-                                        placeholder="Votre email" style="width:300px;" required>
-                                </div>
-
-
-
-
-
-                                <div class="container col-xxl-8 px-4 py-5">
-                                    <h3 class="col-md-12">METHODE DE PAIEMENT ?</h3>
-
-                                    <select class="col-md-8" name="modePaiement" id="modePaiement">
-                                        <option value="creditCard">Carte de credit</option>
-                                        <option value="debitCard">Carte de debit</option>
-                                        <option value="paypal">Paypal</option>
-                                        <option value="cash">Cash</option>
-                                    </select>
-                                </div>
-
-
-
-                                <div class="container col-xxl-8 px-4 py-5">
-                                    <h3 class="col-md-12">Soumettre votre commande?:</h3>
-
-                                    <button type="submit" class="w-100 btn-lg btn-primary col-md-3">Soumettre</button>
-
-                                </div>
-
-                            </div>
+                            <div class="TextPizzaH2 container-fluid bg-dark rounded">Bienvenue à Pizzaria Mama, Faite votre
+                                commande en ligne!</div>
                         </div>
+                        <form action="/soumission-pizza" method="POST">
+                            <div class="container col-xxl-12 px-4 py-5">
+                                <!-- section de choisisage de pizza -->
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <h2>Choisissez un type de pizza:</h2>
+                                        <div>
+                                            <label>
+                                                <input type="radio" name="pizzaType" value="Hawaienne" required> Hawaienne 7.00$
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label>
+                                                <input type="radio" name="pizzaType" value="All Dressed"> All Dressed 8.10$
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label>
+                                                <input type="radio" name="pizzaType" value="Silicienne"> Silicienne 6.30$
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h2>QUANTITÉ DE PIZZA ?</h2>
+                                        <input type="number" id="quantity" name="pizzaQuantity" min="1" max="99" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <h2>TAILLE DE PIZZA ?</h2>
+                                        <select name="pizzaSize" id="size">
+                                            <option value="petite">Petite X0.8$</option>
+                                            <option value="moyenne">Moyenne X1$</option>
+                                            <option value="grande">Grande X1.2$</option>
+                                        </select>
+                                    </div>
+                                    <!-- SECTION INGREDIENTS SUPP -->
+                                    <div class="col-md-6">
+                                        <h2>EXTRAS?:</h2>
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" name="extras" value="Extra Pepperoni">
+                                                Extra Pepperoni 0.50$
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" name="extras" value="Extra Mozzarella">
+                                                Extra Mozzarella 0.50$
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" name="extras" value="Extra Oeuf"> Extra
+                                                Oeuf 0.50$
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container col-xxl-8 px-4 py-5">
+                                <h3 class="mb-3">VOS INFORMATIONS DE LIVRAISON:</h3>
+                                <div class="row g-3">
+                                    <div class="col-md-12">
+                                        <label for="address" class="form-label">ADRESSE DE LIVRAISON:</label>
+                                        <textarea required class="form-control" id="address" name="address"
+                                            placeholder="Adresse de livraison" rows="4" cols="15"
+                                            style="width:300px;"></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="codePostal" class="form-label">CODE POSTAL:</label>
+                                        <input type="text" class="form-control" id="codePostal" name="codePostal"
+                                            placeholder="Code postal" style="width:300px;" maxlength="7"
+                                            pattern="[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d" title="Format: A1A 1A1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="nom" class="form-label">VOTRE NOM:</label>
+                                        <input type="text" required class="form-control" id="nom" name="nom"
+                                            placeholder="Votre nom" style="width:300px;">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="prenom" class="form-label">VOTRE PRENOM:</label>
+                                        <input type="text" required class="form-control" id="prenom" name="prenom"
+                                            placeholder="Votre prenom" style="width:300px;">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="telephone" class="form-label">VOTRE TELEPHONE:</label>
+                                        <input type="text" class="form-control" id="telephone" name="telephone"
+                                            placeholder="Votre telephone" style="width:300px;" pattern="\d{3}-\d{3}-\d{4}"
+                                            title="Format: 123-456-7890" maxlength="12" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Votre Email:</label>
+                                        <input type="text" class="form-control" id="email" name="email"
+                                            placeholder="Votre email" style="width:300px;" required>
+                                    </div>
 
-                    </form>
+                                    <div class="container col-xxl-8 px-4 py-5">
+                                        <h3 class="col-md-12">METHODE DE PAIEMENT ?</h3>
+
+                                        <select class="col-md-8" name="modePaiement" id="modePaiement">
+                                            <option value="creditCard">Carte de credit</option>
+                                            <option value="debitCard">Carte de debit</option>
+                                            <option value="paypal">Paypal</option>
+                                            <option value="cash">Cash</option>
+                                        </select>
+                                    </div>
+                                    <div class="container col-xxl-8 px-4 py-5">
+                                        <h3 class="col-md-12">Soumettre votre commande?:</h3>
+
+                                        <button type="submit" class="w-100 btn-lg btn-primary col-md-3">Soumettre</button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
-            </div>
 
-        </main>
-    </div>
-
-
-
-    <footer>
-
-        <%- include('partials/footer') %>
-
-    </footer>
-</body>
-
+            </main>
+        </div>
+        <footer>
+            <%- include('partials/footer') %>
+        </footer>
+    </body>
 </html>

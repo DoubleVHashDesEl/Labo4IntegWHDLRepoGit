@@ -1,54 +1,69 @@
 [
-    {
-        "pizzaType": "All Dressed",
-        "pizzaQuantity": "3",
-        "extras": "Extra Mozzarella",
-        "address": "balabala 50 du Titre",
-        "codePostal": "g7g 7g7",
-        "nom": "nomPersone",
-        "prenom": "Nom",
-        "telephone": "333-333-3333",
-        "email": "34563@mail.com",
-        "modePaiement": "creditCard",
-        "pizzaSize": "petite",
-        "prixBase": 19.94,
-        "prixTotal": 22.93
-    },
-    {
-        "pizzaType": "All Dressed",
-        "pizzaQuantity": "12",
-        "extras": [
-            "Extra Mozzarella",
-            "Extra Oeuf"
-        ],
-        "address": "balabala 50 du Titre",
-        "codePostal": "g7g 7g7",
-        "nom": "nomPersone",
-        "prenom": "mec",
-        "telephone": "222-222-2222",
-        "email": "34563@mail.com",
-        "modePaiement": "creditCard",
-        "pizzaSize": "petite",
-        "prixBase": 78.76,
-        "prixTotal": 90.55
-    },
-    {
-        "pizzaType": "Silicienne",
-        "pizzaQuantity": "2",
-        "extras": [
-            "Extra Pepperoni",
-            "Extra Mozzarella",
-            "Extra Oeuf"
-        ],
-        "address": "balabala 50 du Titre",
-        "codePostal": "g7g 7g7",
-        "nom": "nomPersone",
-        "prenom": "comande 2",
-        "telephone": "333-333-3333",
-        "email": "34563@mail.com",
-        "modePaiement": "creditCard",
-        "pizzaSize": "petite",
-        "prixBase": 11.58,
-        "prixTotal": 13.31
-    }
+  {
+    "pizzaType": "All Dressed",
+    "pizzaQuantity": "3",
+    "extras": "Extra Mozzarella",
+    "address": "balabala 50 du Titre",
+    "codePostal": "g7g 7g7",
+    "nom": "nomPersone",
+    "prenom": "Nom",
+    "telephone": "333-333-3333",
+    "email": "34563@mail.com",
+    "modePaiement": "creditCard",
+    "pizzaSize": "petite",
+    "prixBase": 19.94,
+    "prixTotal": 22.93
+  },
+  {
+    "pizzaType": "All Dressed",
+    "pizzaQuantity": "12",
+    "extras": [
+      "Extra Mozzarella",
+      "Extra Oeuf"
+    ],
+    "address": "balabala 50 du Titre",
+    "codePostal": "g7g 7g7",
+    "nom": "nomPersone",
+    "prenom": "mec",
+    "telephone": "222-222-2222",
+    "email": "34563@mail.com",
+    "modePaiement": "creditCard",
+    "pizzaSize": "petite",
+    "prixBase": 78.76,
+    "prixTotal": 90.55
+  },
+  {
+    "pizzaType": "Silicienne",
+    "pizzaQuantity": "2",
+    "extras": [
+      "Extra Pepperoni",
+      "Extra Mozzarella",
+      "Extra Oeuf"
+    ],
+    "address": "balabala 50 du Titre",
+    "codePostal": "g7g 7g7",
+    "nom": "nomPersone",
+    "prenom": "comande 2",
+    "telephone": "333-333-3333",
+    "email": "34563@mail.com",
+    "modePaiement": "creditCard",
+    "pizzaSize": "petite",
+    "prixBase": 11.58,
+    "prixTotal": 13.31
+  },
+  {
+    "pizzaType": "All Dressed",
+    "pizzaQuantity": "1",
+    "extras": "Extra Pepperoni",
+    "address": "eee111",
+    "codePostal": "A1A 1A1",
+    "nom": "pipi",
+    "prenom": "caca",
+    "telephone": "111-111-1111",
+    "email": "elitdesboom@gmail.com",
+    "modePaiement": "debitCard",
+    "pizzaSize": "moyenne",
+    "prixBase": 8.6,
+    "prixTotal": 9.89
+  }
 ]

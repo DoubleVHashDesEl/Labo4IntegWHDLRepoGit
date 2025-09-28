@@ -12,21 +12,16 @@ import fs from 'fs';
 const app = express();
 const port = 8080;
 
-
-
 //static files
 app.use(express.static('public'));
 // Body parser middleware for form data (btn POST)
 app.use(express.urlencoded({ extended: true }));
-
-
 
 // View engine setup
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
 import InfoPizza from './classInfoPizza.js';
-
 
 // Home page
 app.get('/', (req, res) => {
@@ -35,38 +30,31 @@ app.get('/', (req, res) => {
 
 // Data Submitted page
 app.post('/soumission-pizza', (req, res) => {
+  const {
+    pizzaType, pizzaQuantity, pizzaSize,
+    extras = [], address, codePostal,
+    nom, prenom, telephone, email, modePaiement
+  } = req.body;
 
   const pizzaInfo = new InfoPizza();
-
-  pizzaInfo.pizzaType = req.body.pizzaType;
-  pizzaInfo.pizzaQuantity = req.body.pizzaQuantity;
-  pizzaInfo.pizzaSize = req.body.pizzaSize;
-  pizzaInfo.extras = req.body.extras || [];
-  pizzaInfo.address = req.body.address;
-  pizzaInfo.codePostal = req.body.codePostal;
-  pizzaInfo.nom = req.body.nom;
-  pizzaInfo.prenom = req.body.prenom;
-  pizzaInfo.telephone = req.body.telephone;
-  pizzaInfo.email = req.body.email;
-  pizzaInfo.modePaiement = req.body.modePaiement;
-
+  Object.assign(pizzaInfo, {
+    pizzaType,
+    pizzaQuantity,
+    pizzaSize,
+    extras: Array.isArray(extras) ? extras : (extras ? [extras] : []),
+    address,
+    codePostal,
+    nom,
+    prenom,
+    telephone,
+    email,
+    modePaiement
+  });
 
   pizzaInfo.pizzaPrixCommande();
+  saveOrder(pizzaInfo);
 
-  const dataFile = './Data/historique.json';
-  let orders = [];
-  if (fs.existsSync(dataFile)) {
-    try {
-      orders = JSON.parse(fs.readFileSync(dataFile));
-    } catch (e) {
-      orders = [];
-    }
-  }
-  orders.push(pizzaInfo);
-  fs.writeFileSync(dataFile, JSON.stringify(orders, null, 2));
-
-  res.render('dataSubmitted', { InfoPizza: pizzaInfo });//page pour le reçu
-
+  res.render('dataSubmitted', { InfoPizza: pizzaInfo });
 });
 
 // Order History page
@@ -99,3 +87,17 @@ app.use((req, res) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+
+const DATA_FILE = './Data/historique.json';
+
+function loadOrders() {
+  if (!fs.existsSync(DATA_FILE)) return [];
+  try { return JSON.parse(fs.readFileSync(DATA_FILE)); }
+  catch { return []; }
+}
+
+function saveOrder(order) {
+  const orders = loadOrders();
+  orders.push(order);
+  fs.writeFileSync(DATA_FILE, JSON.stringify(orders, null, 2));
+}
