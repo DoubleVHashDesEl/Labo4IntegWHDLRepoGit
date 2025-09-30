@@ -50,7 +50,6 @@ app.post('/soumission-pizza', (req, res) => {
   pizzaInfo.email = req.body.email;
   pizzaInfo.modePaiement = req.body.modePaiement;
 
-
   pizzaInfo.pizzaPrixCommande();
 
   const dataFile = './Data/historique.json';
@@ -99,3 +98,4 @@ app.use((req, res) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+
