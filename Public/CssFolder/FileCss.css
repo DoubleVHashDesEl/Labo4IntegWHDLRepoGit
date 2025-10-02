@@ -1,0 +1,33 @@
+.TextPizzaH1 {
+  font-size: 6.5rem;
+  font-weight: bold;
+  color: #ff5100;
+  text-align: center;
+}
+
+.TextPizzaH2 {
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: #ff5100;
+  text-align: center;
+}
+
+.TextPizzaH3 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ff5100;
+  text-align: center;
+}
+
+.bg-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/ImagesFolder/pizzaFont.jfif');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: -1;
+}

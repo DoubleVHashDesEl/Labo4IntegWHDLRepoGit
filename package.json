@@ -1,0 +1,14 @@
+{
+  "main": "labo4IntegWHDL.js",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node labo4IntegWHDL.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+   
+    
+  }
+}
